@@ -11,15 +11,14 @@ public class TestCenter {
         List<List<String>> csvList = new ArrayList<>();
         File csv = new File("lottoExample/Abc1115.csv");
 //            String path = "lottoExample/Abc1115.txt";
-        BufferedReader reader = null;
-        String line = "";
+        BufferedReader reader;
+        String line ;
 
         try {
             reader = new BufferedReader(new FileReader(csv));
             while ((line = reader.readLine()) != null) {
-                List<String> aLine = new ArrayList<>();
                 String[] lineArr = line.split(",");
-                aLine = Arrays.asList(lineArr);
+                List<String> aLine = Arrays.asList(lineArr);
                 csvList.add(aLine);
 //                System.out.println(line);
             }
