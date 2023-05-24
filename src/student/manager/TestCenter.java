@@ -45,9 +45,9 @@ public class TestCenter {
         String answer = quiz.solveQuiz1();
         this.submitAnswer(1, answer);
         answer = quiz.solveQuiz2();
-//        this.submitAnswer(2, answer);
+        this.submitAnswer(2, answer);
         answer = quiz.solveQuiz3();
-//        this.submitAnswer(3, answer);
+        this.submitAnswer(3, answer);
         answer = quiz.solveQuiz4();
 //        this.submitAnswer(4, answer);
         System.out.println("답안지를 모두 제출합니다.");

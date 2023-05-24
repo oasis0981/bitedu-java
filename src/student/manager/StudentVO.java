@@ -34,6 +34,18 @@ public class StudentVO {
         return kor;
     }
 
+    public int getTotal() {
+        return total;
+    }
+
+    public int getMath() {
+        return math;
+    }
+
+    public String getAccCode() {
+        return accCode;
+    }
+
     public int getEng(){
         return eng;
     }
