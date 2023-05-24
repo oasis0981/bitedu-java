@@ -117,7 +117,31 @@ public class GisaQuiz {
         return answer;
     }
     public String solveQuiz4(){
-        String answer = null;
+        HashMap<String, Integer> locCodes = new HashMap<>();
+        locCodes.put("A", 5);
+        locCodes.put("B", 10);
+        locCodes.put("C", 15);
+
+        // 성취도 A,B인 임시 배열 생성
+        ArrayList<StudentVO> tmpList = new ArrayList<>();
+        for (StudentVO student: dataList){
+            if (student.getLocCode().equals("A") || student.getLocCode().equals("B")){
+                tmpList.add(student);
+            }
+        }
+
+        // 국어점수 + 지역포인트 50이상인 자료
+        int cnt = 0;
+        for (StudentVO student: tmpList){
+            if (student.getKor() + locCodes.get(student.getLocCode()) >= 50) {
+                cnt ++;
+            }
+        }
+
+        String answer = Integer.toString(cnt);
+        System.out.print("문제 4의 정답은 >> ");
+        System.out.println(answer);
+
         return answer;
     }
 }
