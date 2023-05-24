@@ -52,23 +52,23 @@ public class Studio {
         }
 
 
-        // ball 순서 정렬.. 정렬 알고리즘 ?..
-        for (int i=0; i<balls.length-1; i++){
-            for (int j=i+1; j < (balls.length); j++) {
-                if (balls[i].getNumber() > balls[j].getNumber()) {
-                    LottoBall temp = balls[j];
-                    balls[j] = balls[i];
-                    balls[i] = temp;
-                }
-            }
-        }
-
-//        Arrays.sort(balls, new Comparator<LottoBall>() {
-//            @Override
-//            public int compare(LottoBall b1, LottoBall b2) {
-//                return Integer.compare(b1.getNumber(), b2.getNumber());
+//        // ball 순서 정렬.. 정렬 알고리즘 ?..
+//        for (int i=0; i<balls.length-1; i++){
+//            for (int j=i+1; j < (balls.length); j++) {
+//                if (balls[i].getNumber() > balls[j].getNumber()) {
+//                    LottoBall temp = balls[j];
+//                    balls[j] = balls[i];
+//                    balls[i] = temp;
+//                }
 //            }
-//        });
+//        }
+
+        Arrays.sort(balls, new Comparator<LottoBall>() {
+            @Override
+            public int compare(LottoBall b1, LottoBall b2) {
+                return Integer.compare(b1.getNumber(), b2.getNumber());
+            }
+        });
 
 //        Arrays.sort(balls);
 

@@ -14,7 +14,7 @@ public class StudentVO {
     private String teacherCode;
     private String accCode;
 
-    public StudentVO(int stdNo, String email, int kor, int eng, int math, int sci, int hist, int total, String locCode, String accCode, String teacherCode) {
+    public StudentVO(int stdNo, String email, int kor, int eng, int math, int sci, int hist, int total, String teacherCode, String accCode, String locCode) {
         this.stdNo = stdNo;
         this.email = email;
         this.kor = kor;
@@ -26,6 +26,37 @@ public class StudentVO {
         this.locCode = locCode;
         this.accCode = accCode;
         this.teacherCode = teacherCode;
+    }
+    public int getStdNo(){
+        return stdNo;
+    }
+    public int getKor(){
+        return kor;
+    }
+
+    public int getEng(){
+        return eng;
+    }
+
+    public String getLocCode() {
+        return locCode;
+    }
+
+    @Override
+    public String toString() {
+        return "StudentVO{" +
+                "stdNo=" + stdNo +
+                ", email='" + email + '\'' +
+                ", kor=" + kor +
+                ", math=" + math +
+                ", eng=" + eng +
+                ", sci=" + sci +
+                ", hist=" + hist +
+                ", locCode='" + locCode + '\'' +
+                ", total=" + total +
+                ", teacherCode='" + teacherCode + '\'' +
+                ", accCode='" + accCode + '\''  +
+                '}' + '\n';
     }
 
     public String getEmail() {
