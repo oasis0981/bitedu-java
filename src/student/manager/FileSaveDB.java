@@ -1,12 +1,7 @@
 package student.manager;
 
 import java.io.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.List;
+import java.sql.*;
 
 public class FileSaveDB {
     public static void main(String[] args) {
@@ -49,12 +44,11 @@ public class FileSaveDB {
                 rows = pstmt.executeUpdate();
             }
             System.out.println("저장된 행 수 : " + rows);
+            ResultSet rs = pstmt.executeQuery();
 
             pstmt.close();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
