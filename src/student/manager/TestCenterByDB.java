@@ -12,7 +12,7 @@ public class TestCenterByDB {
 
     public void startTest() throws IOException {
         System.out.println("시험지를 배부합니다.");
-        ArrayList<StudentVO> data = null;
+        ArrayList<StudentDTO> data = null;
         System.out.println("시험을 시작합니다.");
         GisaQuiz quiz = new GisaQuiz(data);
         String answer = quiz.solveQuiz1();

@@ -1,6 +1,6 @@
 package student.manager;
 
-public class StudentVO {
+public class StudentDTO {
     private int stdNo;
     private String email;
     private int kor;
@@ -14,7 +14,7 @@ public class StudentVO {
     private String teacherCode;
     private String accCode;
 
-    public StudentVO(int stdNo, String email, int kor, int eng, int math, int sci, int hist, int total, String teacherCode, String accCode, String locCode) {
+    public StudentDTO(int stdNo, String email, int kor, int eng, int math, int sci, int hist, int total, String teacherCode, String accCode, String locCode) {
         this.stdNo = stdNo;
         this.email = email;
         this.kor = kor;

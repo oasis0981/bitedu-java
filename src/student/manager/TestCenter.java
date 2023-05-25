@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class TestCenter {
 
@@ -12,20 +13,20 @@ public class TestCenter {
         tc.startTest();
     }
 
-    public ArrayList<StudentVO> readFile(){
+    public ArrayList<StudentDTO> readFile() {
 
-        ArrayList<StudentVO> students = new ArrayList<>();
+        ArrayList<StudentDTO> students = new ArrayList<>();
         File csv = new File("Abc1115.csv");
         BufferedReader reader;
-        String line ;
+        String line;
 
         try {
             reader = new BufferedReader(new FileReader(csv));
             while ((line = reader.readLine()) != null) {
-                StudentVO student;
+                StudentDTO student;
                 String[] lineArr = line.split(",");
                 List<String> aLine = Arrays.asList(lineArr);
-                student = new StudentVO(Integer.parseInt(aLine.get(0)), aLine.get(1), Integer.parseInt(aLine.get(2).trim()), Integer.parseInt(aLine.get(3).trim()), Integer.parseInt(aLine.get(4).trim()), Integer.parseInt(aLine.get(5).trim()), Integer.parseInt(aLine.get(6).trim()), Integer.parseInt(aLine.get(7).trim()), aLine.get(8).trim(), aLine.get(9), aLine.get(10));
+                student = new StudentDTO(Integer.parseInt(aLine.get(0)), aLine.get(1), Integer.parseInt(aLine.get(2).trim()), Integer.parseInt(aLine.get(3).trim()), Integer.parseInt(aLine.get(4).trim()), Integer.parseInt(aLine.get(5).trim()), Integer.parseInt(aLine.get(6).trim()), Integer.parseInt(aLine.get(7).trim()), aLine.get(8).trim(), aLine.get(9), aLine.get(10));
                 students.add(student);
             }
 
@@ -38,7 +39,7 @@ public class TestCenter {
 
     public void startTest() throws IOException {
         System.out.println("시험지를 배부합니다.");
-        ArrayList<StudentVO> data = null;
+        ArrayList<StudentDTO> data = null;
         data = this.readFile();
         System.out.println("시험을 시작합니다.");
         GisaQuiz quiz = new GisaQuiz(data);

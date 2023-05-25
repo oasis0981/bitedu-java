@@ -1,6 +1,9 @@
-package student.manager;
+package bitedu.bipa.lesson2;
 
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
 
 public class GisaQuiz {
     private ArrayList<StudentDTO> dataList;
