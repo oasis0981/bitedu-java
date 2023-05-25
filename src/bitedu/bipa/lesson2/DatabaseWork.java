@@ -53,7 +53,6 @@ public class DatabaseWork {
         String sql = "" +
                 "INSERT INTO studentinfo VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-
         // 쿼리 전송 통로 생성
         PreparedStatement pstmt = con.prepareStatement(sql);
 
@@ -72,7 +71,6 @@ public class DatabaseWork {
             pstmt.setString(11, dto.getLocCode());
             pstmt.executeUpdate();
         }
-
 
         // 통로 정리
         pstmt.close();
