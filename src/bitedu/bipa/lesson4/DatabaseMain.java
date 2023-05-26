@@ -4,10 +4,7 @@ package bitedu.bipa.lesson4;
 import bitedu.bipa.lesson2.DatabaseWork;
 import bitedu.bipa.lesson2.StudentDTO;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -80,5 +77,9 @@ public class DatabaseMain {
         work.insertData(students);
 
     }
-
+    private void submitAnswer(int num, String answer) throws IOException {
+        FileWriter output = new FileWriter("C:/Users/금정산2_PC07/Documents/bitedu-java/Ans"+num+".txt");
+        output.write(answer);
+        output.close();
+    }
 }
