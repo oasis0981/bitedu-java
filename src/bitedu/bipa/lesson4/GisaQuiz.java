@@ -18,7 +18,7 @@ public class GisaQuiz {
         sb.append("order by (kor+eng) desc, id asc limit 4,1");
         String sql = sb.toString();
 
-        int stdNo = dao.selectQuiz1(sql);
+        int stdNo = dao.selectQuiz(sql);
         answer = String.valueOf(stdNo);
 
         return answer;
@@ -32,7 +32,7 @@ public class GisaQuiz {
         sb.append("where reg='b' order by (kor+eng) desc limit 0,1");
         String sql = sb.toString();
 
-        int score = dao.selectQuiz2(sql);
+        int score = dao.selectQuiz(sql);
         answer = String.valueOf(score);
 
         return answer;
@@ -41,35 +41,27 @@ public class GisaQuiz {
     public String solveQuiz3() throws SQLException, ClassNotFoundException {
         String answer = null;
 
-        StringBuffer sb = new StringBuffer("select case when acc = 'A' then total + 5 ");
-        sb.append("when acc = 'B' then total + 15 ");
-        sb.append("when acc = 'C' then total + 20 ");
-        sb.append("end as sum_score from student.studentinfo where (eng+math) >= 120");
+        StringBuffer sb = new StringBuffer("select sum(total + case acc when 'A' then 5 ");
+        sb.append("when 'B' then 15 ");
+        sb.append("when 'C' then 20 ");
+        sb.append("end) as sum from student.studentinfo where eng + math >= 120");
         String sql = sb.toString();
 
-        int score = dao.selectQuiz3(sql);
+        int score = dao.selectQuiz(sql);
         answer = String.valueOf(score);
 
         return answer;
     }
+
     public String solveQuiz4() throws SQLException, ClassNotFoundException {
         String answer = null;
 
-        /**
-         * select id, case
-         * 	when reg = 'A' then kor + 5
-         *     when reg = 'B' then kor + 10
-         *     when reg = 'C' then kor + 15
-         * end as sum_score from student.studentinfo where acc = 'A' or acc = 'B'
-         */
-
-        StringBuffer sb = new StringBuffer("select id, case when reg = 'A' then kor + 5 ");
-        sb.append("when reg = 'B' then kor + 10 ");
-        sb.append("when reg = 'C' then kor + 15 ");
-        sb.append("end as sum_score from student.studentinfo where acc = 'A' or acc = 'B'");
+        StringBuffer sb = new StringBuffer("select count(*) from student.studentinfo ");
+        sb.append("where acc in ('A','B') and kor + case reg ");
+        sb.append("when 'A' then 5 when 'B' then 10 when 'C' then 15 end >= 50");
         String sql = sb.toString();
 
-        int score = dao.selectQuiz4(sql);
+        int score = dao.selectQuiz(sql);
         answer = String.valueOf(score);
 
         return answer;

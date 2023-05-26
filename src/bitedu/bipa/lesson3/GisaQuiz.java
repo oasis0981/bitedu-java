@@ -60,13 +60,6 @@ public class GisaQuiz {
     public String solveQuiz4() throws SQLException, ClassNotFoundException {
         String answer = null;
 
-        /**
-         * select id, case
-         * 	when reg = 'A' then kor + 5
-         *     when reg = 'B' then kor + 10
-         *     when reg = 'C' then kor + 15
-         * end as sum_score from student.studentinfo where acc = 'A' or acc = 'B'
-         */
 
         StringBuffer sb = new StringBuffer("select id, case when reg = 'A' then kor + 5 ");
         sb.append("when reg = 'B' then kor + 10 ");
