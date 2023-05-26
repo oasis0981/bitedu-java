@@ -4,29 +4,40 @@ package bitedu.bipa.lesson3;
 import bitedu.bipa.lesson2.DatabaseWork;
 import bitedu.bipa.lesson2.StudentDTO;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class DatabaseMain {
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, IOException {
         DatabaseMain main = new DatabaseMain();
 //        main.makeTable();
         main.testStart();
     }
 
-    public void testStart() throws SQLException, ClassNotFoundException {
+    public void testStart() throws SQLException, ClassNotFoundException, IOException {
 //        ArrayList<StudentDTO> data = this.readyData();
         System.out.println("시험을 시작합니다.");
         GisaQuiz quiz = new GisaQuiz();
         String answer1 = quiz.solveQuiz1();
+
         System.out.println("1번: " + answer1);
+        String answer2 = quiz.solveQuiz2();
+
+        System.out.println("2번: " + answer2);
+
+        String answer3 = quiz.solveQuiz3();
+        System.out.println("3번: " + answer3);
+
+        String answer4 = quiz.solveQuiz4();
+        System.out.println("4번: " + answer4);
+
+
         System.out.println("시험을 종료합니다.");
+
+
     }
 
     public void makeTable() {
@@ -66,4 +77,5 @@ public class DatabaseMain {
         work.insertData(students);
 
     }
+
 }

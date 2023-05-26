@@ -29,21 +29,53 @@ public class GisaQuiz {
         return answer;
     }
 
-    public String solveQuiz2(){
+    public String solveQuiz2() throws SQLException, ClassNotFoundException {
         String answer = null;
 
+        // 로직 처리(SQL)
+        StringBuffer sb = new StringBuffer("select (kor+eng) from student.studentinfo ");
+        sb.append("where reg='b' order by (kor+eng) desc limit 0,1");
+        String sql = sb.toString();
+
+        int score = dao.selectQuiz2(sql);
+        answer = String.valueOf(score);
 
         return answer;
     }
-    public String solveQuiz3(){
+
+    public String solveQuiz3() throws SQLException, ClassNotFoundException {
         String answer = null;
 
+        StringBuffer sb = new StringBuffer("select case when acc = 'A' then total + 5 ");
+        sb.append("when acc = 'B' then total + 15 ");
+        sb.append("when acc = 'C' then total + 20 ");
+        sb.append("end as sum_score from student.studentinfo where (eng+math) >= 120");
+        String sql = sb.toString();
+
+        int score = dao.selectQuiz3(sql);
+        answer = String.valueOf(score);
 
         return answer;
     }
-    public String solveQuiz4(){
+    public String solveQuiz4() throws SQLException, ClassNotFoundException {
         String answer = null;
 
+        /**
+         * select id, case
+         * 	when reg = 'A' then kor + 5
+         *     when reg = 'B' then kor + 10
+         *     when reg = 'C' then kor + 15
+         * end as sum_score from student.studentinfo where acc = 'A' or acc = 'B'
+         */
+
+        StringBuffer sb = new StringBuffer("select id, case when reg = 'A' then kor + 5 ");
+        sb.append("when reg = 'B' then kor + 10 ");
+        sb.append("when reg = 'C' then kor + 15 ");
+        sb.append("end as sum_score from student.studentinfo where acc = 'A' or acc = 'B'");
+        String sql = sb.toString();
+
+        int score = dao.selectQuiz4(sql);
+        answer = String.valueOf(score);
 
         return answer;
     }

@@ -1,6 +1,5 @@
 package bitedu.bipa.lesson2;
 
-import com.mysql.cj.protocol.Resultset;
 
 import java.sql.*;
 import java.util.ArrayList;
