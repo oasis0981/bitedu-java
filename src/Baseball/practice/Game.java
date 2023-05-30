@@ -1,4 +1,4 @@
-package Baseball.practice;
+package baseball.practice;
 
 import java.util.ArrayList;
 
