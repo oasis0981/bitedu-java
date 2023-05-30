@@ -46,35 +46,61 @@ public class DatabaseWork {
     }
 
     public void insert(ArrayList<StudentDTO> list) throws SQLException, ClassNotFoundException {
-        Connection con = this.getConnection();
+        Connection con = null;
+        try {
+            con = this.getConnection();
 
-        //SQL 작성
-        String sql = "" +
-                "INSERT INTO studentinfo VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            con.setAutoCommit(false);
 
-        // 쿼리 전송 통로 생성
-        PreparedStatement pstmt = con.prepareStatement(sql);
+            //SQL 작성
+            String sql = "" +
+                    "INSERT INTO studentinfo VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        for(StudentDTO dto: list) {
-            // 통로를 통해서 쿼리 실행
-            pstmt.setInt(1, dto.getStdNo());
-            pstmt.setString(2, dto.getEmail());
-            pstmt.setInt(3, dto.getKor());
-            pstmt.setInt(4, dto.getEng());
-            pstmt.setInt(5, dto.getMath());
-            pstmt.setInt(6, dto.getSci());
-            pstmt.setInt(7, dto.getHist());
-            pstmt.setInt(8, dto.getTotal());
-            pstmt.setString(9, dto.getTeacherCode());
-            pstmt.setString(10, dto.getAccCode());
-            pstmt.setString(11, dto.getLocCode());
-            pstmt.executeUpdate();
+            // 쿼리 전송 통로 생성
+            PreparedStatement pstmt = con.prepareStatement(sql);
+
+            int rows = 0;
+
+            for (StudentDTO dto : list) {
+                // 통로를 통해서 쿼리 실행
+                pstmt.setInt(1, dto.getStdNo());
+                pstmt.setString(2, dto.getEmail());
+                pstmt.setInt(3, dto.getKor());
+                pstmt.setInt(4, dto.getEng());
+                pstmt.setInt(5, dto.getMath());
+                pstmt.setInt(6, dto.getSci());
+                pstmt.setInt(7, dto.getHist());
+                pstmt.setInt(8, dto.getTotal());
+                pstmt.setString(9, dto.getTeacherCode());
+                pstmt.setString(10, dto.getAccCode());
+                pstmt.setString(11, dto.getLocCode());
+                rows = pstmt.executeUpdate();
+            }
+            System.out.println("저장된 행 수 : " + rows);
+
+            if (rows == 0) throw new Exception("저장 실패");
+            pstmt.close();
+
+            con.commit();
+            System.out.println("저장 성공");
+        } catch (Exception e) {
+            try {
+                assert con != null;
+                con.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+
+        } finally {
+            if (con != null) {
+                try {
+                    con.setAutoCommit(true);
+                    con.close();
+                    System.out.println("연결 끊기");
+                } catch (SQLException ignored) {
+                }
+            }
         }
-
-        // 통로 정리
-        pstmt.close();
-
-        // 커넥션 정리
     }
 
     public ArrayList<StudentDTO> getStudentData() throws SQLException, ClassNotFoundException {

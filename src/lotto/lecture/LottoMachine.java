@@ -18,7 +18,7 @@ public class LottoMachine {
             selectedBalls[i] = this.getBall();
             System.out.println(selectedBalls[i] + "번이 선택되었습니다!");
             try{
-                Thread.sleep(800); // 일정간격
+                Thread.sleep(200); // 일정간격
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -34,6 +34,7 @@ public class LottoMachine {
         int index = rnd.nextInt(balls.size());
         ball =balls.remove(index);
         return ball;
+
 //        while (true) {
 //            // 저장소에서 꺼낼 공 결정
 //            int index = rnd.nextInt(balls.size());

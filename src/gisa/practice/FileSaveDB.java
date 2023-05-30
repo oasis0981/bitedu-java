@@ -18,6 +18,8 @@ public class FileSaveDB {
                     "0000"
             );
 
+            conn.setAutoCommit(false);
+
             System.out.println("연결 성공");
 
             String sql = "" +
@@ -44,16 +46,22 @@ public class FileSaveDB {
                 rows = pstmt.executeUpdate();
             }
             System.out.println("저장된 행 수 : " + rows);
-            ResultSet rs = pstmt.executeQuery();
 
+            if (rows == 0) throw new Exception("저장 실패");
             pstmt.close();
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+
+            conn.commit();
+            System.out.println("저장 성공");
+        } catch (Exception e) {
+            try {
+                assert conn != null;
+                conn.rollback();
+            } catch (SQLException e1) {e1.printStackTrace();}
+
         } finally {
             if(conn != null) {
                 try {
+                    conn.setAutoCommit(true);
                     conn.close();
                     System.out.println("연결 끊기");
                 } catch (SQLException ignored) {
