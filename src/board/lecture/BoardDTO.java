@@ -1,15 +1,17 @@
 package board.lecture;
 
+import java.util.Date;
+
 public class BoardDTO {
 
     private int bno;
     private String btitle;
     private String bcontent;
     private String bwriter;
-    private String bdate;
+    private Date bdate;
 
     public BoardDTO(){}
-    public BoardDTO(int bno, String btitle, String bcontent, String bwriter, String bdate) {
+    public BoardDTO(int bno, String btitle, String bcontent, String bwriter, Date bdate) {
         this.bno = bno;
         this.btitle = btitle;
         this.bcontent = bcontent;
@@ -25,7 +27,7 @@ public class BoardDTO {
         return bcontent;
     }
 
-    public String getBdate() {
+    public Date getBdate() {
         return bdate;
     }
 
@@ -45,7 +47,7 @@ public class BoardDTO {
         this.bcontent = bcontent;
     }
 
-    public void setBdate(String bdate) {
+    public void setBdate(Date bdate) {
         this.bdate = bdate;
     }
 
