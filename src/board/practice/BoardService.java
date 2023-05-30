@@ -1,12 +1,10 @@
-package board;
+package board.practice;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
-
-import static java.lang.System.exit;
 
 public class BoardService {
 
@@ -44,7 +42,7 @@ public class BoardService {
                         board.getBdate(),
                         board.getBtitle());
             }
-            board.ConnectionManager.closeConnection(rs, pstmt, conn);
+            ConnectionManager.closeConnection(rs, pstmt, conn);
         } catch(SQLException e) {
             e.printStackTrace();
             exit();

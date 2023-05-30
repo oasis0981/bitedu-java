@@ -1,4 +1,4 @@
-package board;
+package board.practice;
 
 import java.util.Scanner;
 

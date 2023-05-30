@@ -1,7 +1,6 @@
-package community;
+package board.practice;
 
-public class BoardDTO {
-
+public class BoardDAO {
     private int bno;
     private String btitle;
     private String bcontent;
@@ -47,5 +46,4 @@ public class BoardDTO {
     public void setBwriter(String bwriter) {
         this.bwriter = bwriter;
     }
-
 }

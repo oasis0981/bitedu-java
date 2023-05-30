@@ -1,11 +1,21 @@
-package board;
+package board.lecture;
 
-public class BoardDAO {
+public class BoardDTO {
+
     private int bno;
     private String btitle;
     private String bcontent;
     private String bwriter;
     private String bdate;
+
+    public BoardDTO(){}
+    public BoardDTO(int bno, String btitle, String bcontent, String bwriter, String bdate) {
+        this.bno = bno;
+        this.btitle = btitle;
+        this.bcontent = bcontent;
+        this.bwriter = bwriter;
+        this.bdate = bdate;
+    }
 
     public int getBno() {
         return bno;
@@ -45,5 +55,16 @@ public class BoardDAO {
 
     public void setBwriter(String bwriter) {
         this.bwriter = bwriter;
+    }
+
+    @Override
+    public String toString() {
+        return "BoardDTO{" +
+                "bno=" + bno +
+                ", btitle='" + btitle + '\'' +
+                ", bcontent='" + bcontent + '\'' +
+                ", bwriter='" + bwriter + '\'' +
+                ", bdate='" + bdate + '\'' +
+                '}';
     }
 }

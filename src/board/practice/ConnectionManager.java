@@ -1,11 +1,12 @@
-package community;
+package board.practice;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
 import java.util.Properties;
 
-public class ConncetionManager {
+public class ConnectionManager {
     public static void closeConnection(ResultSet rs, Statement stmt, Connection con){
         if(rs != null){
             try {
@@ -46,7 +47,7 @@ public class ConncetionManager {
         Properties p = new Properties();
 
         try {
-            p.load(new FileReader("data/db/db.properties"));
+            p.load(new FileReader("data/db/board.properties"));
             jdbcURL = p.getProperty("jdbcURL");
             driver = p.getProperty("driver");
             id = p.getProperty("id");

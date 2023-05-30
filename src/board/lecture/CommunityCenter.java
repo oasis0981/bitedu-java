@@ -1,4 +1,4 @@
-package community;
+package board.lecture;
 
 import java.util.Scanner;
 
