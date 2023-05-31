@@ -1,5 +1,6 @@
 package board.lecture;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CommunityCenter {
@@ -12,6 +13,7 @@ public class CommunityCenter {
 	
 	public void openCenter() {
 		boolean isClose = false;
+		System.out.println("");
 		System.out.println("안녕하세요! 커뮤니티 센터입니다.\n\n");
 		Scanner scan = new Scanner(System.in);
 		String command;
@@ -48,24 +50,25 @@ public class CommunityCenter {
 		System.out.println("[게시물 읽기]");
 		System.out.print("bno: "); 
 		String command = scan.nextLine();
-		this.displayDetail(command,scan);
+		this.displayDetail(Integer.parseInt(command),scan);
 	}
 
 	private void create(Scanner scan) {
 		// TODO Auto-generated method stub
-		//BoardDTO board = new BoardDTO();
+		BoardDTO board = new BoardDTO();
 		System.out.println("[새 게시물 입력]");
 		System.out.print("제목: "); 	
-		//board.setBtitle(scan.nextLine());
+		board.setBtitle(scan.nextLine());
 		System.out.print("내용: "); 	
-		//board.setBcontent(scan.nextLine());
+		board.setBcontent(scan.nextLine());
 		System.out.print("글쓴이: "); 	
-		//board.setBwriter(scan.nextLine());
+		board.setBwriter(scan.nextLine());
 		
 		System.out.println();
 		boolean flag = this.displayConfirm(scan);
+		BoardService service = new BoardService();
 		if(flag) {
-			//삽입작업
+			service.register(board);
 			System.out.println("삽입완료");
 		} else {
 			System.out.println("삽입취소");
@@ -74,12 +77,26 @@ public class CommunityCenter {
 	}
 
 	private void displayList() {
-		System.out.println("전체 리스트");
+		System.out.println("======================== 게시물 목록 ========================");
+		System.out.printf("%-6s%-30s%-20s%-15s\n", "bno", "제목", "작성일", "작성자");
+		BoardService service = new BoardService();
+		ArrayList<BoardDTO> list = service.readAll();
+		for( BoardDTO post: list){
+			System.out.printf("%-6s%-30s%-20s%-15s\n", post.getBno(), post.getBtitle(), post.getBdate(), post.getBwriter());
+		}
 	}
 	
-	private void displayDetail(String bno,Scanner scan) {
-		System.out.println(bno+"번 상세 내용");
-		
+	private void displayDetail(int bno,Scanner scan) {
+		System.out.println();
+		System.out.println("[" + bno+"번 상세 내용 조회]");
+		BoardService service = new BoardService();
+		BoardDTO post = service.read(bno);
+
+		System.out.println("제목  : " + post.getBtitle());
+		System.out.println("작성자: " + post.getBwriter());
+		System.out.println("-----------------------------------------------------------------------");
+		System.out.println(post.getBcontent());
+
 		System.out.println();
 		this.displaySubMenu();
 		String command = scan.nextLine();
@@ -112,7 +129,6 @@ public class CommunityCenter {
 		System.out.println("-----------------------------------------------------------------------");
 		System.out.println("메인메뉴: 1.Create | 2.Read | 3.Clear | 4.Exit");
 		System.out.print("메뉴선택: ");
-		
 	}	
 	
 	private boolean displayConfirm(Scanner scan) {

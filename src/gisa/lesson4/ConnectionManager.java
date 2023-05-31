@@ -48,7 +48,7 @@ public class ConnectionManager {
         Properties p = new Properties();
 
         try {
-            p.load(new FileReader("data/db/db.properties"));
+            p.load(new FileReader("data/db/board.properties"));
             jdbcURL = p.getProperty("jdbcURL");
             driver = p.getProperty("driver");
             id = p.getProperty("id");
