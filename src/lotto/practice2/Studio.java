@@ -50,7 +50,7 @@ public class Studio {
 
         System.out.print("오늘의 로또 번호는 ");
 
-        selectedBalls.sort(new Comparator<LottoBall>() {
+        selectedBalls.sort(new Comparator<>() {
             @Override
             public int compare(LottoBall o1, LottoBall o2) {
                 return o1.getNumber() - o2.getNumber();

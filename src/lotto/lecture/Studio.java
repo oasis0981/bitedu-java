@@ -16,17 +16,16 @@ public class Studio {
 
     // 로또 머신과 로또 볼을 준비해야함 : 아래 메소드에서 사용할 수 있도록 로또 머신을 리턴해야함
     // 최근 추세가 프로터티를 웬만하면 안만드는 추세임 - 쓰레드 때문에 ?
+
     public LottoMachine ready() {
+
         // 로또 머신과 로또 볼을 준비
-        // LottoMachine machine = new LottoMachine();라고 해도 됨. 순차적으로 작성하다 보니 이렇게 쓴 것.
-        LottoMachine machine = null;
-        // 머신 준비LottoBall
-        machine = new LottoMachine();
-        // 볼 준비
-        ArrayList<LottoBall> balls = new ArrayList<LottoBall>();
+        LottoMachine machine = new LottoMachine();
+        ArrayList<LottoBall> balls = new ArrayList<>();
         for (int i=0; i<45; i++){
             balls.add(new LottoBall(i+1));
         }
+
         // 머신에 볼 세팅
         machine.setBalls(balls);
         return machine;
@@ -52,22 +51,22 @@ public class Studio {
 
 
 //        // ball 순서 정렬.. 정렬 알고리즘 ?..
-//        for (int i=0; i<balls.length-1; i++){
-//            for (int j=i+1; j < (balls.length); j++) {
-//                if (balls[i].getNumber() > balls[j].getNumber()) {
-//                    LottoBall temp = balls[j];
-//                    balls[j] = balls[i];
-//                    balls[i] = temp;
-//                }
-//            }
-//        }
-
-        Arrays.sort(balls, new Comparator<LottoBall>() {
-            @Override
-            public int compare(LottoBall b1, LottoBall b2) {
-                return Integer.compare(b1.getNumber(), b2.getNumber());
+        for (int i=0; i<balls.length-1; i++){
+            for (int j=i+1; j < (balls.length); j++) {
+                if (balls[i].getNumber() > balls[j].getNumber()) {
+                    LottoBall temp = balls[j];
+                    balls[j] = balls[i];
+                    balls[i] = temp;
+                }
             }
-        });
+        }
+
+//        Arrays.sort(balls, new Comparator<LottoBall>() {
+//            @Override
+//            public int compare(LottoBall b1, LottoBall b2) {
+//                return Integer.compare(b1.getNumber(), b2.getNumber());
+//            }
+//        });
 
 //        Arrays.sort(balls);
 

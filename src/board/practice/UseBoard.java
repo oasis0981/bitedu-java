@@ -26,10 +26,10 @@ public class UseBoard {
         BoardService bs = new BoardService();
         System.out.println();
         switch(menuNo) {
-            case "1" -> bs.create();
-            case "2" -> bs.read();
-            case "3" -> bs.clear();
-            case "4" -> bs.exit();
+            case "1" : bs.create();
+            case "2" : bs.read();
+            case "3" : bs.clear();
+            case "4" : bs.exit();
         }
 
 

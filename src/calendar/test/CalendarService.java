@@ -41,8 +41,8 @@ public class CalendarService {
             }
 
             // 계속 서비스 이용할지 물어보기
-                System.out.println("계속 이용 하시겠습니까? [예: yes, 아니오: no]");
-                String cmd = input.nextLine();
+            System.out.println("계속 이용 하시겠습니까? [예: yes, 아니오: no]");
+            String cmd = input.nextLine();
             if (cmd.equals("no")) {
                 System.out.println("이용해 주셔서 감사합니다.");
                 flag = true;
